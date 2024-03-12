@@ -114,7 +114,7 @@ async def photo_sent(message: Message, state: FSMContext, largest_photo: PhotoSi
 
     await message.bot.download(
         message.photo[-1],
-        destination=f"/home/skurbick/Desktop/PROJECTS/Фрукты-овощи/taste_store/buyer_photos/{largest_photo.file_id}.jpg"
+        destination=f"buyer_photos/{largest_photo.file_id}.jpg"
     )
     data = await state.get_data()
     await message.answer(text="Отлично!\n Подтвердите вашу заявку:")

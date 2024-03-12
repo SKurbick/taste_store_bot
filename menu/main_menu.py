@@ -9,7 +9,9 @@ async def main_menu(bot: Bot):
         BotCommand(command='/help',
                    description='справка по работе бота'),
         BotCommand(command='/commands',
-                   description='команды для бота')
+                   description='команды для бота'),
+        BotCommand(command='/cancel',
+                   description='отменить действие')
     ]
 
     await bot.set_my_commands(buyer_menu_commands)
