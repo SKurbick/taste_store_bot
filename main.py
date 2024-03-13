@@ -28,7 +28,7 @@ async def main() -> None:
     logger.info("STARTING BOT")
 
     scheduler = AsyncIOScheduler()
-    scheduler.add_job(for_admin_message, 'cron', hour=16, minute=16, args=(bot,))
+    scheduler.add_job(for_admin_message, 'cron', hour=23, minute=00, args=(bot,), timezone='Europe/Moscow')
 
     dp.include_router(registration_handlers.router)
 

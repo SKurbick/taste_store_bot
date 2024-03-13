@@ -1,17 +1,7 @@
 {
   "buyers": {
-    "527623797": {
-      "reg_user_name": "Jfkf kdjd",
-      "link_username": "MG_Aziev",
-      "phone_number": "89997776655"
-    }
   },
   "managers": {
-    "6431037047": {
-      "reg_user_name": "Курбан Ахмедов",
-      "link_username": null,
-      "phone_number": "89640206389"
-    }
   },
   "admins": {}
 }
