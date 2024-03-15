@@ -1,7 +1,11 @@
 {
   "buyers": {
+    "6431037047": {
+      "reg_user_name": "vvvhgff gcbjg",
+      "link_username": null,
+      "phone_number": "11111111111"
+    }
   },
-  "managers": {
-  },
+  "managers": {},
   "admins": {}
 }
