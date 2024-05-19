@@ -69,7 +69,7 @@ async def role_give(callback: CallbackQuery, state: FSMContext):
     del_waiting_data(str(user_id))
     await callback.message.answer(text=f"Готово! Пользователь {user_data['reg_user_name']} успешно зарегистрирован!")
     await callback.bot.send_message(chat_id=user_id,
-                                    text="Вы зарегистрированы! Отправьте команду /start что бы продолжить активность.")
+                                    text="Вы зарегистрированы! Отправьте команду /help для дальнейшего ознакомления.")
     await state.clear()
 
 

@@ -1,22 +1,20 @@
-from pprint import pprint
 
-from aiogram import Router, F, Bot
-from aiogram.types import Message, CallbackQuery, PhotoSize, BufferedInputFile, InlineKeyboardButton, \
+from aiogram import Router, F
+from aiogram.types import Message, CallbackQuery,  InlineKeyboardButton, \
     InlineKeyboardMarkup
 from aiogram.filters import Command
 
 from filters.data_validate import IsPhoneNumber, IsUserName
-from keyboards.registration_keyboard import keyboard_registration, keyboard_registration_user, keyboard_confirm_data
-from lexicon.lexicon import LEXICON_RU, data_translate
-from keyboards.buyer_keyboard import comm_offer_kb, keyboard_unit, keyboard_yes_no
-from keyboards.manager_keyboard import keyboard_order_or_skip
+from keyboards.registration_keyboard import keyboard_registration, keyboard_confirm_data
+from lexicon.lexicon import LEXICON_RU
+
 
 from aiogram.filters import StateFilter
 from aiogram.fsm.context import FSMContext
-from aiogram.fsm.state import default_state, State, StatesGroup
+from aiogram.fsm.state import default_state
 from states.states import FSMRegistration
 from filters.all_users import IsRegUsersMessage
-from utils import add_in_buyer_offers_data, users_list, add_in_waiting_for_reg
+from utils import  users_list, add_in_waiting_for_reg
 
 # todo хендлер реагирует на сообщение ответным сообщением о том что пользвоателю необходимо зарегистрироваться, если его в ролевых списках
 admin = users_list("admins")[0]
@@ -77,10 +75,9 @@ async def phone_number(callback: CallbackQuery, state: FSMContext):
         chat_id=callback.from_user.id,
         message_id=callback.message.message_id,
         reply_markup=None)
-    button_reg_user = InlineKeyboardButton(text="Зарегистрировать пользователя",
+    button_reg_user = InlineKeyboardButton(text="Зарегистрировать",
                                            callback_data=f"registration_{callback.from_user.id}")
-    print(callback.from_user.id)
-    button_refuse_user = InlineKeyboardButton(text="Отказать в регистрации",
+    button_refuse_user = InlineKeyboardButton(text="Отказать",
                                               callback_data=f"refuse_{callback.from_user.id}")
     keyboard_registration_user_test = InlineKeyboardMarkup(
         inline_keyboard=[
@@ -112,29 +109,4 @@ async def phone_number(callback: CallbackQuery, state: FSMContext):
 async def pre_registration_message(message: Message):
     await message.answer(
         text="Вам необходимо зарегистрироваться. Отправьте команду /registration и с вами свяжется администратор "
-             "компании 'Фрукты-овощи'")
-
-
-# TODO РЕГИСТРАЦИЯ
-""" пользователь запрашивает регистрацию -> хендлер перенаправляет запрос администратору информацию о регистрации пользователя
-    - > в информации: id, first_name, last_name, username - предложение зарегистрировать пользователя в роли "закупщика" или "менеджера"
-    - > после выбора роли бот сохраняет информацию выше в бд - > направляет пользователю инф. о статусе регистрации  
-"""
-# if callback.data == "registration":
-#     pprint(callback.message.con)
-#     user_data = {
-#         "id": callback.from_user.id,
-#         "first_name": callback.from_user.first_name,
-#         "last_name": callback.from_user.last_name,
-#         "username": callback.from_user.username,
-#     }
-#     await callback.bot.send_message(chat_id=admin,
-#                                     text=LEXICON_RU["/registration_action"].format(
-#                                         f"{user_data['first_name']} {user_data['last_name']}",
-#                                         user_data['username']),
-#                                     reply_markup=keyboard_registration_user)
-#     await callback.message.answer(
-#         text=LEXICON_RU["/registration_status"])
-#     print("registration")
-# elif callback.data == "cancel":
-#     print("cancel")
+             "компании 'ОФК'")

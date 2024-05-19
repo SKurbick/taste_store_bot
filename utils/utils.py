@@ -55,7 +55,7 @@ def price_for_manager(buyer_price):
     Прибавляет 25%
     корректна если входное значение больше 10
     """
-    for_manager_price = int(buyer_price) * 1.25
+    for_manager_price = int(buyer_price) * 1.1
     return int(for_manager_price + 0.5)
 
 
@@ -141,17 +141,3 @@ def clear_offer_data():
     os.mkdir(folder)
     with open("data/bayer_offer_data.json", "w") as f:
         f.write("{}")
-
-
-"""
-for buyer menu:
-/comm_offer - 
-/help - информация по командам
-/my_offers - предложения от  
-for managerVV menu:
-/offers - предложения в течении дня 
-
-for admin and managerTS:
-
-
-"""

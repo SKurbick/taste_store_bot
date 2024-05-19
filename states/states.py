@@ -5,6 +5,8 @@ class FSMCommOffer(StatesGroup):
     product_name = State()
     unit = State()
     upload_photo = State()
+    country = State()
+    comments = State()
     price = State()
     yes_no = State()
 

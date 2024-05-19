@@ -12,16 +12,6 @@ router.message.filter(IsManagerMessage())  # место для фильтра н
 router.callback_query.filter(IsManagerCallback())
 
 
-@router.callback_query(F.data.in_(["order", "skip"]))
-async def order_status(callback: CallbackQuery):
-    await callback.message.answer(text="чики брики в менеджеры!!")
-
-
-@router.message(Command(commands="start"))
-async def manager_start(message: Message):
-    await message.answer(text=LEXICON_RU["/start_manager"])
-
-
 @router.message(Command(commands="help"))
 async def help_manager_message(message: Message):
     await message.answer(text=help_message["help_manager"])
@@ -57,7 +47,13 @@ async def status_show_offers(callback: CallbackQuery):
         for buyer_id in all_daily_offers.values():
             for offer_id in buyer_id:
                 for offer_data in offer_id.values():
-                    action_message = f"Наименование продукта: {offer_data['name']}\n цена: {offer_data['result_price']} руб. за {data_translate[offer_data['unit']]}\n"
+                    action_message = LEXICON_RU['result_action_message_buyer'].format(offer_data['name'],
+                                                                                      offer_data['country'],
+                                                                                      offer_data['result_price'],
+                                                                                      data_translate[
+                                                                                          offer_data['unit']],
+                                                                                      offer_data['comments'])
+
                     with open(f"buyer_photos/{offer_data['photo_id']}.jpg", "rb") as image_from_buffer:
                         await callback.message.answer_photo(
                             BufferedInputFile(
