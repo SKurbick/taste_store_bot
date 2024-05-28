@@ -30,7 +30,7 @@ async def show_daily_offers(message: Message):
             reply_markup=keyboard_show_all_offers)
     else:
         await message.answer(
-            text="К сожалению за день ещё не было сформированно ни одного коммерческого предложения :(")
+            text="К сожалению за день ещё не было сформировано ни одного коммерческого предложения :(")
 
 
 @router.callback_query(F.data.in_(["show_all_offers", "cancel_show_offers"]))
