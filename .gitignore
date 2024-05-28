@@ -2,3 +2,5 @@
 creative.py
 json_creative.py
 .idea/
+venv
+__pycache__

@@ -1,5 +1,22 @@
 {
-  "buyers": {},
-  "managers": {},
+  "buyers": {
+    "6431037047": {
+      "reg_user_name": "Курбан Ахмедов",
+      "link_username": null,
+      "phone_number": "89640206389"
+    },
+    "5740527669": {
+      "reg_user_name": "Расим Султансулейманов",
+      "link_username": null,
+      "phone_number": "89015521515"
+    }
+  },
+  "managers": {
+    "5859305922": {
+      "reg_user_name": "Загид Асиятилов",
+      "link_username": "mzagid",
+      "phone_number": "89282878088"
+    }
+  },
   "admins": {}
 }
