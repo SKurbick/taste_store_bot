@@ -4,3 +4,5 @@ json_creative.py
 .idea/
 venv
 __pycache__
+buyer_photos
+data
